@@ -48,7 +48,6 @@ const products = [
     name: "Makhana Fox Nuts",
     short: "Makhana Fox Nuts",
     brand: "Makhana",
-    price: 299,
     weight: "100g",
     accent: "#159ca5",
     bg: "#e0f3f4",
@@ -72,7 +71,6 @@ const products = [
     name: "Mother Made Makhana",
     short: "Mother Made",
     brand: "Mother Made",
-    price: 299,
     weight: "200g",
     accent: "#159ca5",
     bg: "#e0f3f4",
@@ -96,7 +94,6 @@ const products = [
     name: "Century Nutri Pop's Makhana",
     short: "Nutri Pop's",
     brand: "Century",
-    price: 299,
     weight: "100g",
     accent: "#222222",
     bg: "#eeeeee",
@@ -120,7 +117,6 @@ const products = [
     name: "Madhuban Makhana",
     short: "Madhuban",
     brand: "Madhuban",
-    price: 399,
     weight: "200g",
     accent: "#b51f27",
     bg: "#f8e0d5",
@@ -144,7 +140,6 @@ const products = [
     name: "Maruti Makhana",
     short: "Maruti",
     brand: "Maruti",
-    price: 399,
     weight: "200g",
     accent: "#7d1522",
     bg: "#f1ddd4",
@@ -168,7 +163,6 @@ const products = [
     name: "Century Nutri Pure Makhana",
     short: "Nutri Pure",
     brand: "Century",
-    price: 499,
     weight: "250g",
     accent: "#c9911b",
     bg: "#f7ead0",
@@ -487,10 +481,9 @@ function CartProvider({ children }) {
     );
   const remove = (id) => setItems((prev) => prev.filter((x) => x.id !== id));
   const count = items.reduce((s, x) => s + x.qty, 0);
-  const total = items.reduce((s, x) => s + x.qty * x.price, 0);
   const value = useMemo(
-    () => ({ items, open, setOpen, add, change, remove, count, total }),
-    [items, open, count, total],
+    () => ({ items, open, setOpen, add, change, remove, count }),
+    [items, open, count],
   );
   return (
     <CartContext.Provider value={value}>
@@ -552,7 +545,7 @@ function Header() {
 }
 
 function CartDrawer() {
-  const { items, open, setOpen, change, remove, total } = useCart();
+  const { items, open, setOpen, change, remove } = useCart();
   return (
     <>
       {open && <div className="backdrop" onClick={() => setOpen(false)} />}
@@ -582,7 +575,6 @@ function CartDrawer() {
                 <ProductArt product={item} />
                 <div className="cart-info">
                   <h4>{item.name}</h4>
-                  <strong>₹{item.price.toLocaleString("en-IN")}</strong>
                   <div className="qty">
                     <button onClick={() => change(item.id, -1)}>
                       <Minus size={14} />
@@ -603,8 +595,6 @@ function CartDrawer() {
         {items.length > 0 && (
           <div className="drawer-bottom">
             <div className="total-line">
-              <span>Subtotal</span>
-              <strong>₹{total.toLocaleString("en-IN")}</strong>
             </div>
             <button className="checkout">
               Checkout <ArrowRight size={18} />
@@ -633,10 +623,17 @@ function Footer() {
               products for wholesome, everyday snacking.
             </p>
           </div>
-          <a className="light-btn" href="https://wa.me/919999988888">
+
+          <a
+            className="light-btn"
+            href="https://wa.me/919993763040"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Apply via WhatsApp <ArrowRight size={17} />
           </a>
         </div>
+
         <div className="footer-grid">
           <div>
             <Link to="/" className="brand footer-brand">
@@ -646,12 +643,14 @@ function Footer() {
                 <small>DRY FRUITS</small>
               </span>
             </Link>
+
             <p>
               Making wholesome snacking simple, delicious, and accessible.
               Discover premium makhana, crafted for light, crunchy, everyday
               enjoyment.
             </p>
           </div>
+
           <div>
             <h4>Navigation</h4>
             <Link to="/">Home</Link>
@@ -659,15 +658,24 @@ function Footer() {
             <Link to="/about">About Us</Link>
             <Link to="/contact">Contact</Link>
           </div>
+
           <div>
             <h4>Contact</h4>
-            <a href="tel:+919999988888">+91 99999 88888</a>
-            <a href="mailto:hello@qasmiglobalfoods.com">
-              hello@qasmiglobalfoods.com
+
+            <a href="tel:+919993763040">
+              +919993763040
             </a>
-            <span>New Delhi, India</span>
+
+            <a href="mailto:centurytradersfeedbacks@gmail.com">
+              centurytradersfeedbacks@gmail.com
+            </a>
+
+            <span>
+              Reni Wali Gali, Mangalwara, Bhopal
+            </span>
           </div>
         </div>
+
         <div className="copyright">
           <span>© 2026 Century Dry Fruits. All rights reserved.</span>
         </div>
@@ -946,8 +954,6 @@ function ProductGrid({ onAdd }) {
                 <h3>{p.name}</h3>
 
                 <div className="product-bottom">
-                  <strong>₹{p.price}</strong>
-
                   <button onClick={() => onAdd(p)}>Add to Cart</button>
                 </div>
               </div>
@@ -1056,8 +1062,6 @@ function ProductsGrid({ onAdd }) {
             <h3>{p.name}</h3>
 
             <div className="product-bottom">
-              <strong>₹{p.price}</strong>
-
               <button onClick={() => onAdd(p)}>
                 Add to Cart
               </button>
@@ -1300,8 +1304,7 @@ function ProductPage() {
             </div>
 
             <div className="detail-price">
-              ₹{product.price}
-              <small> / {product.weight}</small>
+              <small> {product.weight}</small>
             </div>
 
             <h3 className="product-tagline">{product.tagline}</h3>
@@ -1398,7 +1401,7 @@ function Contact() {
             <p>
               Have questions about our premium makhana, custom orders, or
               partnerships? Reach out to our team via phone, email, or visit our
-              office.
+              shop.
             </p>
           </div>
         </section>
@@ -1409,12 +1412,12 @@ function Contact() {
               <div className="contact-item">
                 <MapPin />
                 <div>
-                  <small>OFFICE ADDRESS</small>
+                  <small>ADDRESS</small>
                   <h3>CENTURY DRY FRUITS</h3>
                   <p>
-                    21-A, Sector 5, Industrial Area,
+                    Reni Wali Gali,
                     <br />
-                    New Delhi, 110015, India
+                    Mangalwara, Bhopal
                   </p>
                 </div>
               </div>
@@ -1422,19 +1425,15 @@ function Contact() {
                 <Phone />
                 <div>
                   <small>CALL / WHATSAPP</small>
-                  <a href="tel:+919999988888">+91 99999 88888</a>
-                  <p>Toll-free customer support</p>
+                  <a href="tel:+919993763040">+919993763040</a>
                 </div>
               </div>
               <div className="contact-item">
                 <Mail />
                 <div>
                   <small>EMAIL SUPPORT</small>
-                  <a href="mailto:hello@qasmiglobalfoods.com">
-                    hello@qasmiglobalfoods.com
-                  </a>
-                  <a href="mailto:care@qasmiglobalfoods.com">
-                    care@qasmiglobalfoods.com
+                  <a href="mailto:centurytradersfeedbacks@gmail.com">
+                    centurytradersfeedbacks@gmail.com
                   </a>
                 </div>
               </div>
@@ -1450,9 +1449,8 @@ function Contact() {
             <div className="map">
               <div className="map-grid" />
               <div className="map-pin">
-                <MapPin size={30} />
                 <b>CENTURY DRY FRUITS</b>
-                <span>New Delhi, India</span>
+                <span>Reni Wali Gali, Mangalwara, Bhopal</span>
               </div>
             </div>
           </div>
