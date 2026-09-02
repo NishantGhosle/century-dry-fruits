@@ -546,25 +546,54 @@ function Header() {
 
 function CartDrawer() {
   const { items, open, setOpen, change, remove } = useCart();
+
+  const handleCheckout = () => {
+    const phoneNumber = "919993763040";
+
+    const productDetails = items
+      .map((item, index) => `${index + 1}. ${item.name} - Qty: ${item.qty}`)
+      .join("\n");
+
+    const message = `Hello Century Dry Fruits,
+
+I would like to place an order:
+
+${productDetails}
+
+Please confirm the availability and total price.
+
+Thank you.`;
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message,
+    )}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <>
       {open && <div className="backdrop" onClick={() => setOpen(false)} />}
-      <aside className={"cart-drawer " + (open ? "show" : "")}>
+
+      <aside className={`cart-drawer ${open ? "show" : ""}`}>
         <div className="drawer-head">
           <div>
             <span className="eyebrow">YOUR BAG</span>
             <h3>Shopping Cart</h3>
           </div>
+
           <button onClick={() => setOpen(false)}>
             <X />
           </button>
         </div>
+
         <div className="drawer-items">
           {!items.length ? (
             <div className="empty-cart">
               <ShoppingBag size={42} />
               <h4>Your cart is empty</h4>
               <p>Add a Talbeena flavor to get started.</p>
+
               <button className="dark-btn" onClick={() => setOpen(false)}>
                 Continue Shopping
               </button>
@@ -573,18 +602,23 @@ function CartDrawer() {
             items.map((item) => (
               <div className="cart-row" key={item.id}>
                 <ProductArt product={item} />
+
                 <div className="cart-info">
                   <h4>{item.name}</h4>
+
                   <div className="qty">
                     <button onClick={() => change(item.id, -1)}>
                       <Minus size={14} />
                     </button>
+
                     <span>{item.qty}</span>
+
                     <button onClick={() => change(item.id, 1)}>
                       <Plus size={14} />
                     </button>
                   </div>
                 </div>
+
                 <button className="remove" onClick={() => remove(item.id)}>
                   <Trash2 size={16} />
                 </button>
@@ -592,11 +626,12 @@ function CartDrawer() {
             ))
           )}
         </div>
+
         {items.length > 0 && (
           <div className="drawer-bottom">
-            <div className="total-line">
-            </div>
-            <button className="checkout">
+            <div className="total-line" />
+
+            <button className="checkout" onClick={handleCheckout}>
               Checkout <ArrowRight size={18} />
             </button>
           </div>
@@ -662,17 +697,13 @@ function Footer() {
           <div>
             <h4>Contact</h4>
 
-            <a href="tel:+919993763040">
-              +919993763040
-            </a>
+            <a href="tel:+919993763040">+919993763040</a>
 
             <a href="mailto:centurytradersfeedbacks@gmail.com">
               centurytradersfeedbacks@gmail.com
             </a>
 
-            <span>
-              Reni Wali Gali, Mangalwara, Bhopal
-            </span>
+            <span>Reni Wali Gali, Mangalwara, Bhopal</span>
           </div>
         </div>
 
@@ -1062,9 +1093,7 @@ function ProductsGrid({ onAdd }) {
             <h3>{p.name}</h3>
 
             <div className="product-bottom">
-              <button onClick={() => onAdd(p)}>
-                Add to Cart
-              </button>
+              <button onClick={() => onAdd(p)}>Add to Cart</button>
             </div>
           </div>
         </article>
