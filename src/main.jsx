@@ -1874,6 +1874,7 @@ function App() {
     <CartProvider>
       <ScrollToTop />
       <Routes>
+        <Route path="*" element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/contact" element={<Contact />} />
