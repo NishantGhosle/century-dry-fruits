@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main Pages -->
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/</loc>
+  </url>
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/products</loc>
+  </url>
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/wholesale</loc>
+  </url>
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/about</loc>
+  </url>
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/contact</loc>
+  </url>
+
+
+  <!-- Products -->
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/product-detail/makhana-fox-nuts</loc>
+  </url>
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/product-detail/mother-made-makhana</loc>
+  </url>
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/product-detail/century-nutri-pops-makhana</loc>
+  </url>
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/product-detail/madhuban-makhana</loc>
+  </url>
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/product-detail/maruti-makhana</loc>
+  </url>
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/product-detail/century-nutri-pure-makhana</loc>
+  </url>
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/product-detail/premium-kaju</loc>
+  </url>
+
+  <url>
+    <loc>https://centurydryfruit.com/sitemap.xml/product-detail/premium-kismis</loc>
+  </url>
+
+</urlset>
