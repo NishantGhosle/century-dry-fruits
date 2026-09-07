@@ -551,7 +551,7 @@ function CartProvider({ children }) {
     <CartContext.Provider value={value}>
       {children}
 
-      <WhatsAppButton hidden={open} />
+      <FloatingContactButtons hidden={open} />
 
       <CartDrawer />
     </CartContext.Provider>
@@ -926,7 +926,7 @@ function Home() {
               <h2>
                 Choose Your <em>Flavor</em>
               </h2>
-              <p>
+              <p className="flavour-paragraph">
                 Discover our range of premium makhana — light, crunchy,
                 naturally delicious, and perfect for wholesome everyday
                 snacking.
@@ -1883,33 +1883,53 @@ function About() {
   );
 }
 
-function WhatsAppButton({ hidden = false }) {
+function FloatingContactButtons({ hidden }) {
   if (hidden) return null;
 
-  const phoneNumber = "919993763040"; // <-- replace with your WhatsApp number
-  const message = encodeURIComponent(
-    "Hello, I would like to know more about your products."
-  );
+  const phoneNumber = "919993763040";
 
   return (
-    <a
-      href={`https://wa.me/${phoneNumber}?text=${message}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="whatsapp-floating-btn"
-      aria-label="Chat with us on WhatsApp"
-    >
-      <svg
-        viewBox="0 0 32 32"
-        width="28"
-        height="28"
-        fill="currentColor"
-        aria-hidden="true"
+    <div className="floating-contact-buttons">
+
+      {/* Call Now */}
+      <a
+        href={`tel:+${phoneNumber}`}
+        className="floating-call-btn"
+        aria-label="Call Now"
       >
-        <path d="M19.11 17.23c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.7-1.33-1.56-1.49-1.83-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.63 1.11 2.81c.14.18 1.93 2.95 4.68 4.14.65.28 1.16.45 1.56.57.66.21 1.26.18 1.73.11.53-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z" />
-        <path d="M16.02 3C8.84 3 3 8.84 3 16c0 2.3.6 4.55 1.74 6.54L3 29l6.61-1.69A12.94 12.94 0 0 0 16.02 29C23.18 29 29 23.16 29 16S23.18 3 16.02 3zm0 23.64c-2.04 0-4.04-.55-5.78-1.59l-.41-.24-3.92 1 1.05-3.82-.27-.42A10.94 10.94 0 1 1 16.02 26.64z" />
-      </svg>
-    </a>
+        <svg
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+        </svg>
+        <span className="btn-text">Call Now</span>
+      </a>
+
+      {/* WhatsApp */}
+      <a
+        href={`https://wa.me/${phoneNumber}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="floating-whatsapp-btn"
+        aria-label="Chat with us on WhatsApp"
+      >
+        <svg
+          viewBox="0 0 32 32"
+          width="18"
+          height="18"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.637.86 5.08 2.317 7.06L4.6 28.4l6.53-1.71A11.94 11.94 0 0 0 16.001 27C22.628 27 28 21.627 28 15S22.628 3 16.001 3Zm0 21.818a9.77 9.77 0 0 1-4.98-1.363l-.357-.212-3.878 1.016 1.036-3.78-.233-.39A9.78 9.78 0 0 1 6.182 15c0-5.421 4.398-9.818 9.819-9.818S25.818 9.579 25.818 15 21.421 24.818 16.001 24.818Zm5.377-7.34c-.294-.147-1.74-.858-2.009-.956-.269-.098-.465-.147-.661.147-.196.294-.759.955-.931 1.152-.171.196-.343.221-.637.074-.294-.147-1.242-.458-2.366-1.462-.874-.78-1.464-1.744-1.636-2.038-.171-.294-.018-.453.129-.6.132-.132.294-.343.441-.514.147-.171.196-.294.294-.49.098-.196.049-.368-.024-.515-.074-.147-.661-1.596-.906-2.185-.239-.573-.482-.496-.661-.505l-.563-.01c-.196 0-.515.074-.784.368-.269.294-1.028 1.004-1.028 2.451 0 1.447 1.053 2.845 1.2 3.042.147.196 2.073 3.166 5.022 4.44.702.303 1.25.484 1.677.62.705.224 1.346.192 1.853.117.565-.084 1.74-.712 1.985-1.4.245-.688.245-1.278.172-1.4-.073-.123-.269-.196-.563-.343Z"/>
+        </svg>
+        <span className="btn-text">WhatsApp</span>
+      </a>
+
+    </div>
   );
 }
 

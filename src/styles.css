@@ -1548,6 +1548,10 @@ h2 em {
   margin: 0 auto 30px;
 }
 
+.flavour-paragraph{
+  padding-bottom: 15px;
+}
+
 /* ==================================================
    SCROLL & MEDIUM ANIMATIONS
 ================================================== */
@@ -1597,44 +1601,87 @@ h2 em {
 .scroll-reveal.delay-5 { transition-delay: 0.5s; }
 .scroll-reveal.delay-6 { transition-delay: 0.6s; }
 
-.whatsapp-floating-btn {
+/* Fixed Contact Buttons */
+.floating-contact-buttons {
   position: fixed;
   right: 20px;
   bottom: 20px;
 
-  width: 58px;
-  height: 58px;
+  display: flex;
+  gap: 10px;
 
-  border-radius: 50%;
-  background: #25D366;
-  color: #fff;
+  z-index: 9999;
+}
+
+.floating-contact-buttons a {
+  height: 35px;
+  padding: 0 20px;
+
+  /* Classic Square & Monochrome */
+  border-radius: 0;
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
 
   text-decoration: none;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-
-  z-index: 9999;
+  /* Classic crisp shadow */
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.1s ease;
 }
 
-.whatsapp-floating-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+/* Classic High-Contrast Inverted Hover */
+.floating-contact-buttons a:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);
 }
 
+.floating-contact-buttons a:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Common SVG Sizing */
+.floating-contact-buttons a svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Mobile */
 @media (max-width: 600px) {
-  .whatsapp-floating-btn {
-    right: 16px;
-    bottom: 16px;
-    width: 54px;
-    height: 54px;
+  .floating-contact-buttons {
+    right: 14px;
+    bottom: 14px;
+    gap: 8px;
+  }
+
+  .floating-contact-buttons a {
+    height: 42px;
+    width: 42px; /* Perfect square for icon-only mobile */
+    padding: 0;
+  }
+
+  .floating-contact-buttons a span.btn-text {
+    display: none;
   }
 }
 
@@ -2189,7 +2236,6 @@ h2 em {
 
   /* Testimonials */
   .review-head {
-    align-items: flex-start;
     flex-direction: column;
     gap: 22px;
   }
@@ -2551,4 +2597,44 @@ h2 em {
   .partner h2 {
     font-size: 32px;
   }
+}
+/* Center section headings on all screen sizes */
+.section-title {
+  text-align: center;
+}
+
+.section-title .eyebrow,
+.section-title h2,
+.section-title p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Customer Stories */
+.review-head {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 22px;
+  text-align: center;
+}
+
+.review-head > div:first-child {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.review-head .eyebrow,
+.review-head h2,
+.review-head p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.review-controls {
+  margin-left: auto;
+  justify-content: flex-end;
 }
