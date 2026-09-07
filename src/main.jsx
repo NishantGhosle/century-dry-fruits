@@ -33,6 +33,8 @@ import Image_03_front from "../assets/images/Image_03_front.png";
 import Image_04_front from "../assets/images/Image_04_front.png";
 import Image_05_front from "../assets/images/Image_05_front.png";
 import Image_06_front from "../assets/images/Image_06_front.png";
+import Image_07_front from "../assets/images/Image_07_front.png";
+import Image_08_front from "../assets/images/Image_08_front.png";
 
 import Image_01_back from "../assets/images/Image_01_back.png";
 import Image_02_back from "../assets/images/Image_02_back.png";
@@ -40,6 +42,8 @@ import Image_03_back from "../assets/images/Image_03_back.png";
 import Image_04_back from "../assets/images/Image_04_back.png";
 import Image_05_back from "../assets/images/Image_05_back.png";
 import Image_06_back from "../assets/images/Image_06_back.png";
+import Image_07_back from "../assets/images/Image_07_back.png";
+import Image_08_back from "../assets/images/Image_08_back.png";
 
 const products = [
   {
@@ -178,6 +182,52 @@ const products = [
     ],
     image: Image_06_front,
     backImage: Image_06_back,
+  },
+
+  {
+    id: "7",
+    slug: "premium-kaju",
+    name: "Premium Kaju",
+    short: "Premium Kaju",
+    brand: "Kaju",
+    weight: "250g",
+    accent: "#c58b45",
+    bg: "#f7ead8",
+    note: "Premium, crunchy & delicious",
+    tagline: "Premium Quality Cashews",
+    description:
+      "Premium Kaju, also known as Cashews, are rich, creamy and naturally delicious. Carefully selected for their quality and crunch, they make a wholesome snack and are perfect for sweets, desserts and everyday cooking.",
+    features: [
+      "Premium Quality",
+      "Naturally Delicious",
+      "Rich & Creamy",
+      "Crunchy & Fresh",
+    ],
+    image: Image_07_front,
+    backImage: Image_07_back,
+  },
+
+  {
+    id: "8",
+    slug: "premium-kismis",
+    name: "Premium Kismis",
+    short: "Premium Kismis",
+    brand: "Kismis",
+    weight: "250g",
+    accent: "#8b5a3c",
+    bg: "#f1e4d8",
+    note: "Sweet, juicy & naturally delicious",
+    tagline: "Naturally Sweet Raisins",
+    description:
+      "Premium Kismis, also known as Raisins, are naturally sweet, soft and delicious. Carefully selected and packed to retain their freshness, they are perfect for snacking, desserts, sweets and everyday cooking.",
+    features: [
+      "Premium Quality",
+      "Naturally Sweet",
+      "Soft & Juicy",
+      "Fresh & Delicious",
+    ],
+    image: Image_08_front,
+    backImage: Image_08_back,
   },
 ];
 
@@ -740,7 +790,7 @@ function Home() {
               </p>
               <div className="hero-actions">
                 <a href="#flavors" className="light-btn">
-                  Explore Flavors <ArrowRight size={17} />
+                  Explore Sub Brands <ArrowRight size={17} />
                 </a>
                 <a href="#products" className="outline-btn">
                   Shop In Store
@@ -749,7 +799,55 @@ function Home() {
             </div>
           </div>
         </section>
+        <section className="section about-values">
+          <div className="container">
+            <div className="section-title centered">
+              <h2>
+                Our Journey
+                <br />
+                <em>So Far.</em>
+              </h2>
+            </div>
 
+            <div className="values-grid">
+              <div className="value-card">
+                <span>01</span>
+                <h3>200+ STORES SERVED</h3>
+                <p>
+                  Trusted by retail stores across Madhya Pradesh and India for
+                  premium-quality Phool Makhana supply.
+                </p>
+              </div>
+
+              <div className="value-card">
+                <span>02</span>
+                <h3>1 LAKH+ PACKETS SOLD</h3>
+                <p>
+                  Delivering fresh, crunchy, and nutritious makhana to thousands
+                  of satisfied customers.
+                </p>
+              </div>
+
+              <div className="value-card">
+                <span>03</span>
+                <h3>200+ WHOLESALE PARTNERS</h3>
+                <p>
+                  Preferred wholesale supplier for distributors, traders,
+                  retailers, and resellers.
+                </p>
+              </div>
+
+              <div className="value-card">
+                <span>04</span>
+                <h3>PREMIUM PHOOL MAKHANA</h3>
+                <p>
+                  Carefully sourced, quality-checked, and packed to ensure
+                  superior taste and freshness.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
         <section className="flavors section" id="flavors">
           <div className="container">
             <div className="section-title">
@@ -822,9 +920,97 @@ function Home() {
             <ProductGrid onAdd={add} />
           </div>
         </section>
-
+        <section className="section keywords-section">
+          <div className="container">
+            <div className="section-title centered">
+              <span className="eyebrow">SERVING BHOPAL & BEYOND</span>
+              <h2>
+                Wholesale, Bulk & Distribution
+                <br />
+                <em>Makhana Supply</em>
+              </h2>
+            </div>
+            <div className="values-grid">
+              <div className="value-card">
+                <h3>Wholesale Makhana in Bhopal</h3>
+                <p>
+                  We are one of the leading suppliers of wholesale makhana in
+                  Bhopal, serving retailers, supermarkets, and distributors with
+                  premium-quality fox nuts.
+                </p>
+              </div>
+              <div className="value-card">
+                <h3>Fox Nuts Wholesale Supplier</h3>
+                <p>
+                  Our fox nuts are sourced from trusted producers and supplied
+                  in bulk quantities for commercial and retail requirements.
+                </p>
+              </div>
+              <div className="value-card">
+                <h3>Phool Makhana Distributor</h3>
+                <p>
+                  We provide high-quality Phool Makhana for wholesalers,
+                  resellers, dry fruit stores, and food businesses across India.
+                </p>
+              </div>
+              <div className="value-card">
+                <h3>Bulk Makhana Supplier</h3>
+                <p>
+                  Looking for bulk makhana at competitive prices? We offer
+                  reliable supply, quality assurance, and prompt delivery.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
         <Benefits />
         <Testimonials />
+        <section className="section why-choose-us">
+          <div className="container">
+            <div className="section-title centered">
+              <span className="eyebrow">WHY CHOOSE US</span>
+              <h2>
+                Trusted <em>Wholesale Makhana</em>
+                <br />
+                Partner in Bhopal
+              </h2>
+            </div>
+            <div className="values-grid">
+              <div className="value-card">
+                <span>01</span>
+                <h3>Premium Quality Makhana</h3>
+                <p>
+                  We supply handpicked Phool Makhana with excellent size,
+                  texture, and taste.
+                </p>
+              </div>
+              <div className="value-card">
+                <span>02</span>
+                <h3>Competitive Wholesale Pricing</h3>
+                <p>
+                  Get the best rates for bulk orders without compromising on
+                  quality.
+                </p>
+              </div>
+              <div className="value-card">
+                <span>03</span>
+                <h3>Reliable Supply & Bulk Order Support</h3>
+                <p>
+                  Consistent inventory, timely delivery, and customized bulk
+                  order solutions for wholesalers, distributors, and retailers.
+                </p>
+              </div>
+              <div className="value-card">
+                <span>04</span>
+                <h3>Hygienic Packaging</h3>
+                <p>
+                  Freshness-preserving packaging for longer shelf life and
+                  superior quality.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
@@ -1212,27 +1398,6 @@ function Testimonials() {
           <div>
             <b>{r[0]}</b>
             <span>India</span>
-          </div>
-        </div>
-        <div className="stats">
-          <div>
-            <b>6</b>
-            <span>Makhana Choices</span>
-          </div>
-
-          <div>
-            <b>100%</b>
-            <span>Crunchy Goodness</span>
-          </div>
-
-          <div>
-            <b>4+</b>
-            <span>Wholesome Benefits</span>
-          </div>
-
-          <div>
-            <b>100%</b>
-            <span>Everyday Snacking</span>
           </div>
         </div>
       </div>

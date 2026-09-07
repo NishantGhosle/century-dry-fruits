@@ -177,7 +177,7 @@ button {
 
 /* ========== HERO ========== */
 .hero {
-  min-height: 690px;
+  min-height: 560px;
   background: var(--brown); /* UPDATED – dark brown */
   color: white;
   position: relative;
@@ -194,7 +194,7 @@ button {
 }
 
 .hero-grid {
-  min-height: 690px;
+  min-height: 560px;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   align-items: center;
@@ -687,7 +687,10 @@ h2 em {
 
 /* Testimonials */
 .testimonials {
-  background: var(--cream);
+  background: rgba(255, 255, 255, 0.5)
+}
+.keywords-section{
+  background: rgba(255, 255, 255, 0.5)
 }
 
 .review-head {
@@ -1483,7 +1486,7 @@ h2 em {
 
 /* Values */
 .about-values {
-  background: var(--cream);
+  background: rgba(255, 255, 255, 0.5)
 }
 
 .values-grid {
@@ -1953,6 +1956,7 @@ h2 em {
 
   /* Hero */
   .hero-grid {
+    min-height: 450px;
     padding-top: 65px;
     padding-bottom: 45px;
   }
