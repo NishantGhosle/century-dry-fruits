@@ -379,35 +379,44 @@ function FlavorCarousel() {
 
         /* ---------- MOBILE ---------- */
 
-        @media (max-width: 600px) {
-          .flavor-carousel {
-            width: 100%;
-          }
+       @media (max-width: 600px) {
+  .flavor-carousel {
+    width: 100%;
+    min-width: 0;
+  }
 
-          .flavor-carousel-controls {
-            margin-bottom: 14px;
-            gap: 8px;
-          }
+  .flavor-carousel-window {
+    width: 100%;
+    overflow: hidden;
+  }
 
-          .flavor-carousel-btn {
-            width: 40px;
-            height: 40px;
-          }
+  .flavor-carousel-controls {
+    margin-bottom: 14px;
+    gap: 8px;
+  }
 
-          .flavor-carousel-track {
-            gap: 16px;
-          }
+  .flavor-carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
 
-          .flavor-carousel-track .flavor-card {
-            flex: 0 0 100%;
-            max-width: 100%;
-          }
+  .flavor-carousel-track {
+    width: 100%;
+    gap: 0;
+  }
 
-          .flavor-carousel-track .flavor-card h4 {
-            font-size: 18px;
-          }
-        }
+  .flavor-carousel-track .flavor-card {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 
+  .flavor-carousel-track .flavor-card h4 {
+    font-size: 18px;
+  }
+}
         /* ---------- SMALL MOBILE ---------- */
 
         @media (max-width: 380px) {
@@ -421,12 +430,14 @@ function FlavorCarousel() {
           }
 
           .flavor-carousel-track {
-            gap: 12px;
+            gap: 0;
           }
 
           .flavor-carousel-track .flavor-card {
-            flex: 0 0 100%;
-            max-width: 100%;
+              flex: 0 0 100%;
+              width: 100%;
+              min-width: 100%;
+              max-width: 100%;
           }
 
           .flavor-carousel-track .flavor-card h4 {
@@ -461,9 +472,10 @@ function FlavorCarousel() {
         <div
           className="flavor-carousel-track"
           style={{
-            transform: `translateX(
-              calc(-${index} * (100% / ${visibleCount} + 24px))
-            )`,
+            transform:
+              visibleCount === 1
+                ? `translateX(-${index * 100}%)`
+                : `translateX(calc(-${index} * (100% / ${visibleCount} + 24px)))`,
           }}
         >
           {products.map((p) => (
@@ -538,6 +550,9 @@ function CartProvider({ children }) {
   return (
     <CartContext.Provider value={value}>
       {children}
+
+      <WhatsAppButton hidden={open} />
+
       <CartDrawer />
     </CartContext.Provider>
   );
@@ -1055,80 +1070,97 @@ function ProductGrid({ onAdd }) {
 
   return (
     <div className="product-carousel">
-      <style>{`
-        .product-carousel {
-          position: relative;
-          width: 100%;
-        }
+    <style>{`
+      .product-carousel {
+        position: relative;
+        width: 100%;
+      }
 
-        .product-carousel-window {
-          overflow: hidden;
-          width: 100%;
-        }
+      .product-carousel-window {
+        overflow: hidden;
+        width: 100%;
+      }
 
+      .product-carousel-track {
+        display: flex;
+        gap: 24px;
+        transition: transform 0.45s ease;
+        will-change: transform;
+      }
+
+      .product-carousel-track .product-card {
+        flex: 0 0 calc((100% - 72px) / 4);
+        min-width: 0;
+        box-sizing: border-box;
+      }
+
+      .carousel-controls {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .carousel-btn {
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(110, 82, 53, 0.2);
+        background: #fff;
+        color: #6E5235;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .carousel-btn:hover:not(:disabled) {
+        background: #6E5235;
+        color: #fff;
+      }
+
+      .carousel-btn:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+
+      /* Tablet */
+      @media (max-width: 900px) {
         .product-carousel-track {
-          display: flex;
           gap: 24px;
-          transition: transform 0.45s ease;
-          will-change: transform;
         }
 
         .product-carousel-track .product-card {
-          flex: 0 0 calc((100% - 72px) / 4);
-          min-width: 0;
+          flex: 0 0 calc((100% - 24px) / 2);
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 600px) {
+        .product-carousel-window {
+          width: 100%;
+          overflow: hidden;
+        }
+
+        .product-carousel-track {
+          gap: 0;
+          width: 100%;
+        }
+
+        .product-carousel-track .product-card {
+          flex: 0 0 100%;
+          width: 100%;
+          max-width: 100%;
+          min-width: 100%;
+          box-sizing: border-box;
         }
 
         .carousel-controls {
-          display: flex;
-          justify-content: flex-end;
-          gap: 10px;
-          margin-bottom: 18px;
+          margin-bottom: 14px;
         }
-
-        .carousel-btn {
-          width: 42px;
-          height: 42px;
-          border: 1px solid rgba(110, 82, 53, 0.2);
-          background: #fff;
-          color: #6E5235;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-
-        .carousel-btn:hover:not(:disabled) {
-          background: #6E5235;
-          color: #fff;
-        }
-
-        .carousel-btn:disabled {
-          opacity: 0.35;
-          cursor: not-allowed;
-        }
-
-        @media (max-width: 900px) {
-          .product-carousel-track .product-card {
-            flex: 0 0 calc((100% - 24px) / 2);
-          }
-        }
-
-        @media (max-width: 600px) {
-          .product-carousel-track {
-            gap: 16px;
-          }
-
-          .product-carousel-track .product-card {
-            flex: 0 0 100%;
-          }
-
-          .carousel-controls {
-            margin-bottom: 14px;
-          }
-        }
-      `}</style>
+      }
+    `}</style>
 
       <div className="carousel-controls">
         <button
@@ -1154,7 +1186,10 @@ function ProductGrid({ onAdd }) {
         <div
           className="product-carousel-track"
           style={{
-            transform: `translateX(calc(-${index} * (100% / ${visibleCount} + 24px)))`,
+            transform:
+              visibleCount === 1
+                ? `translateX(-${index * 100}%)`
+                : `translateX(calc(-${index} * (100% / ${visibleCount} + 24px)))`,
           }}
         >
           {products.map((p) => (
@@ -1845,6 +1880,36 @@ function About() {
 
       <Footer />
     </>
+  );
+}
+
+function WhatsAppButton({ hidden = false }) {
+  if (hidden) return null;
+
+  const phoneNumber = "919993763040"; // <-- replace with your WhatsApp number
+  const message = encodeURIComponent(
+    "Hello, I would like to know more about your products."
+  );
+
+  return (
+    <a
+      href={`https://wa.me/${phoneNumber}?text=${message}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="whatsapp-floating-btn"
+      aria-label="Chat with us on WhatsApp"
+    >
+      <svg
+        viewBox="0 0 32 32"
+        width="28"
+        height="28"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M19.11 17.23c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.7-1.33-1.56-1.49-1.83-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.63 1.11 2.81c.14.18 1.93 2.95 4.68 4.14.65.28 1.16.45 1.56.57.66.21 1.26.18 1.73.11.53-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z" />
+        <path d="M16.02 3C8.84 3 3 8.84 3 16c0 2.3.6 4.55 1.74 6.54L3 29l6.61-1.69A12.94 12.94 0 0 0 16.02 29C23.18 29 29 23.16 29 16S23.18 3 16.02 3zm0 23.64c-2.04 0-4.04-.55-5.78-1.59l-.41-.24-3.92 1 1.05-3.82-.27-.42A10.94 10.94 0 1 1 16.02 26.64z" />
+      </svg>
+    </a>
   );
 }
 

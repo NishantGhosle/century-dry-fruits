@@ -1597,6 +1597,47 @@ h2 em {
 .scroll-reveal.delay-5 { transition-delay: 0.5s; }
 .scroll-reveal.delay-6 { transition-delay: 0.6s; }
 
+.whatsapp-floating-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+
+  z-index: 9999;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.whatsapp-floating-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+  .whatsapp-floating-btn {
+    right: 16px;
+    bottom: 16px;
+    width: 54px;
+    height: 54px;
+  }
+}
+
 @keyframes pulse-ring {
   0%, 100% {
     transform: scale(1);
@@ -1784,18 +1825,16 @@ h2 em {
     font-size: clamp(42px, 7vw, 58px);
   }
 
-  /* Flavor carousel */
-  .flavor-carousel-track .flavor-card {
-    flex: 0 0 calc((100% - 24px) / 2);
-  }
-
   .flavor-card .product-art {
     height: 300px;
   }
 
-  /* Products carousel */
-  .product-carousel-track .product-card {
-    flex: 0 0 calc((100% - 24px) / 2);
+  .product-carousel-track .product-card,
+  .flavor-carousel-track .flavor-card {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .product-card .product-art {
@@ -2032,6 +2071,8 @@ h2 em {
   /* Flavor carousel */
   .flavor-carousel {
     margin-top: 35px;
+    gap: 0;
+    width: 100%;
   }
 
   .flavor-carousel-controls {
@@ -2066,7 +2107,8 @@ h2 em {
 
   /* Product carousel */
   .product-carousel-track {
-    gap: 16px;
+    gap: 0;
+    width: 100%;
   }
 
   .product-carousel-track .product-card {
